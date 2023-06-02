@@ -1,20 +1,24 @@
 import { useState } from 'react';
-import { BrouserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './assets/pages/HomePage';
+import SignupPage from './assets/pages/SignupPage';
+import HabitsPage from './assets/pages/HabitsPage';
+
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <BrouserRouter>
-      <NavContainer>
+    <BrowserRouter>
+      {/* <NavContainer>
 
-      </NavContainer>
+      </NavContainer> */}
 
       <Routes>
-
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cadastro" element={<SignupPage />} />
+        <Route path="/habitos" element={<HabitsPage />} />
       </Routes>
-    </BrouserRouter>
-  )
+    </BrowserRouter>
+  );
 }
 
 export default App;
