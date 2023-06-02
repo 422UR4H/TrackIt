@@ -6,20 +6,22 @@ import Button from '../components/atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
-  function handleEntrar() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  function login(e) {
+    e.preventDefault();
 
     navigate("/habitos");
   }
 
   return (
-    <StyledTemplate>
+    <StyledTemplate onSubmit={login}>
       <Logo />
       <StyledForm>
         <input type="text" placeholder="email" />
         <input type="text" placeholder="senha" />
 
-        <Button text="Entrar" onClick={handleEntrar} />
+        <Button type="submit" text="Entrar" />
       </StyledForm>
       <Link to="/cadastro">
         Não tem uma conta? Cadastre-se!

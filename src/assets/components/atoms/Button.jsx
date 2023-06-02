@@ -3,16 +3,13 @@ import styled from 'styled-components';
 
 export default function Button({ text }) {
     return (
-        <StyledButton isNegative>
+        <StyledButton>
             {text}
         </StyledButton>
     );
 }
 
 const StyledButton = styled.button`
-    // background-color: ${({ isNegative }) => (isNegative ? 'white' : '#52B6FF')};
-    // color: ${({ isNegative }) => (isNegative ? '#52B6FF' : 'white')};
-    
     background-color: #52B6FF;
     color: white;
     font-size: 21px;
