@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StyledTemplate from '../components/styles/StyledTemplate';
 import Logo from '../components/atoms/Logo';
-import StyledForm from '../components/atoms/StyledForm';
+import StyledForm from '../components/atoms/Form';
 import Button from '../components/atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';

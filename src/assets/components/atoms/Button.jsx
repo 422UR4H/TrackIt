@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import loading from '../../images/load.png';
 
-export default function Button({ text }) {
+export default function Button({ text, disabled }) {
     return (
-        <StyledButton>
-            {text}
+        <StyledButton disabled={disabled}>
+            {disabled ? <img src={loading} alt="..." /> : text}
         </StyledButton>
     );
+}
+
+Button.defaultProps = {
+    disabled: false
 }
 
 const StyledButton = styled.button`
@@ -18,7 +23,11 @@ const StyledButton = styled.button`
 
     width: 303px;
     height: 45px;
-
     border: none;
-    border-radius: 4.64px;
+    border-radius: 5px;
+
+    &:disabled {
+        opacity: 0.7;
+        padding-top: 15px;
+    }
 `;

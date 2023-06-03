@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledForm from '../atoms/StyledForm';
+import StyledForm from '../atoms/Form';
 import { Link } from 'react-router-dom';
 import Button from '../atoms/Button';
 

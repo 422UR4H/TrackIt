@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export default function Form({ children }) {
+    return (
+        <StyledForm>
+            {children}
+        </StyledForm>
+    )
+}
+
 const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
@@ -23,5 +31,3 @@ const StyledForm = styled.form`
         }
     }
 `;
-
-export default StyledForm;
