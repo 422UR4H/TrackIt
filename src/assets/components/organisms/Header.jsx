@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import trackit from '../../images/trackit.png';
+import logoMini from '../../images/logo-mini.svg';
 import userIcon from '../../images/user-icon.png';
 
 export default function Header() {
     return (
         <StyledHeader>
-            <img src={trackit} alt="TrackIt" />
+            <img src={logoMini} alt="TrackIt" />
             <img src={userIcon} alt="User Icon" />
         </StyledHeader>
     );
@@ -26,14 +26,4 @@ const StyledHeader = styled.header`
     position: fixed;
     left: 0;
     top: 0;
-
-    /* img:nth-child(1) {
-        height: auto;
-        width: auto; */
-        /* height: 49px;
-    } */
-
-    /* img:nth-child(2) {
-        height: 51px;
-    } */
 `;

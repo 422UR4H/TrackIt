@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/organisms/Header';
 import Button from '../components/atoms/Button';
 import styled from 'styled-components';
-import Habit from '../components/molecules/Habit';
+import HabitCreateContainer from '../components/molecules/HabitCreateContainer';
 import Footer from '../components/organisms/Footer';
 
 export default function HabitsPage() {
@@ -13,7 +13,7 @@ export default function HabitsPage() {
         Meus Hábitos
         <Button text="+" />
       </div>
-      <Habit />
+      <HabitCreateContainer />
       <p>Você não tem nenhum hábito cadastrado ainda.
         Adicione um hábito para começar a trackear!</p>
       <Footer />

@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import TodayButton from '../molecules/TodayButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+    const navigate = useNavigate();
+
     return (
         <StyledFooter>
-            <Link>Hábitos</Link>
-            <div className="center"><TodayButton /></div>
-            <Link>Histórico</Link>
+            <Link to="/habitos">Hábitos</Link>
+            <div className="center" onClick={() => navigate("/hoje")}><TodayButton /></div>
+            <Link to="/historico">Histórico</Link>
         </StyledFooter>
     );
 }
