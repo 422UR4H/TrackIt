@@ -1,22 +1,15 @@
-import React from 'react';
-import Header from '../components/organisms/Header';
-import Footer from '../components/organisms/Footer';
 import styled from 'styled-components';
 
 export default function HistoryPage() {
     return (
         <StyledHistoryPage>
-            <Header />
             <div className="top">
                 <h1>Histórico</h1>
                 <h2>Em breve você poderá ver o histórico dos seus hábitos aqui!</h2>
             </div>
-
-            <Footer />
         </StyledHistoryPage>
     );
 }
-
 
 const StyledHistoryPage = styled.div`
     background-color: #F2F2F2;

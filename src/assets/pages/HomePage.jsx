@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import Logo from '../components/atoms/Logo';
-import Form from '../components/atoms/Form';
+import { Link, useNavigate } from 'react-router-dom';
 import StyledTemplate from '../components/styles/StyledTemplate';
 import Button from '../components/atoms/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../components/atoms/Logo';
+import Form from '../components/atoms/Form';
 import axios from 'axios';
 import URL from '../../scripts/constants';
 
-export default function HomePage({ setToken }) {
+
+export default function HomePage({ setToken, setIcon }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,8 +25,9 @@ export default function HomePage({ setToken }) {
         email,
         password
       })
-      .then((response) => {
-        setToken(response.data.token);
+      .then(({data}) => {
+        setToken(data.token);
+        setIcon(data.image);
         navigate("/hoje");
       })
       .catch((error) => {

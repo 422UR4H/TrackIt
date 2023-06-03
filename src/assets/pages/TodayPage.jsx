@@ -1,11 +1,9 @@
-import React, { useContext, useEffect } from 'react';
-import Header from '../components/organisms/Header';
-import Footer from '../components/organisms/Footer';
-import styled from 'styled-components';
-import HabitTodayContainer from '../components/molecules/HabitTodayContainer';
-import URL from '../../scripts/constants';
+import { useContext, useEffect } from 'react';
 import { TokenContext } from '../../scripts/TokenContext';
+import HabitTodayContainer from '../components/molecules/HabitTodayContainer';
+import styled from 'styled-components';
 import axios from 'axios';
+import URL from '../../scripts/constants';
 
 
 export default function TodayPage() {
@@ -28,7 +26,6 @@ export default function TodayPage() {
 
     return (
         <StyledTodayPage>
-            <Header />
             <div className="top">
                 <h1>Segunda, 17/05</h1>
                 {habits.lengh === 0 && <h2>Nenhum hábito concluído ainda</h2>}
@@ -36,7 +33,6 @@ export default function TodayPage() {
             <HabitTodayContainer />
             <HabitTodayContainer />
             <HabitTodayContainer />
-            <Footer />
         </StyledTodayPage>
     );
 }

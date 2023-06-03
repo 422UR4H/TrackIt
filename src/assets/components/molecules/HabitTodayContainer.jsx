@@ -1,4 +1,3 @@
-import React from 'react';
 import Check from '../atoms/Check';
 import styled from 'styled-components';
 
@@ -14,7 +13,6 @@ export default function HabitTodayContainer() {
         </StyledHabisTodayContainer>
     );
 }
-
 
 const StyledHabisTodayContainer = styled.div`
     background-color: white;

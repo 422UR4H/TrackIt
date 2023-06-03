@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Header from '../components/organisms/Header';
+import { useContext, useEffect, useState } from 'react';
+import { TokenContext } from '../../scripts/TokenContext';
+import HabitCreateContainer from '../components/molecules/HabitCreateContainer';
 import Button from '../components/atoms/Button';
 import styled from 'styled-components';
-import HabitCreateContainer from '../components/molecules/HabitCreateContainer';
-import Footer from '../components/organisms/Footer';
-import { TokenContext } from '../../scripts/TokenContext';
 import axios from 'axios';
 import URL from '../../scripts/constants';
 
@@ -27,22 +25,8 @@ export default function HabitsPage() {
       })
   }, []);
 
-  function deleteHabit(id) {
-    axios // pesquisar como usar delete com axios
-      .delete(URL.HABITS + `/${id}`, {
-        headers: { "Authorization": `Bearer ${token}` }
-      })
-      .then((message) => {
-        console.log(message);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-  }
-
   return (
     <StyledHabitsPage>
-      <Header />
       <div className="top">
         Meus Hábitos
         <Button text="+" onClick={() => setIsAddingHabit(true)} />
@@ -50,7 +34,6 @@ export default function HabitsPage() {
       {isAddingHabit && <HabitCreateContainer setIsAddingHabit={setIsAddingHabit} />}
       <p>Você não tem nenhum hábito cadastrado ainda.
         Adicione um hábito para começar a trackear!</p>
-      <Footer />
     </StyledHabitsPage>
   );
 }

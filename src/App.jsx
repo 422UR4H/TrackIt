@@ -6,25 +6,32 @@ import HabitsPage from './assets/pages/HabitsPage';
 import TodayPage from './assets/pages/TodayPage';
 import HistoryPage from './assets/pages/HistoryPage';
 import { TokenContext } from './scripts/TokenContext';
+import Header from './assets/components/organisms/Header';
+import Footer from './assets/components/organisms/Footer';
 
 
 function App() {
   const [token, setToken] = useState('');
+  const [icon, setIcon] = useState('');
 
   return (
     <BrowserRouter>
       <TokenContext.Provider value={token}>
-        {/* <NavContainer>
 
-      </NavContainer> */}
+        {token !== '' && <Header icon={icon} />}
 
         <Routes>
-          <Route path="/" element={<HomePage setToken={setToken} />} />
+          <Route path="/" element={
+            <HomePage setToken={setToken} setIcon={setIcon} />
+          } />
           <Route path="/cadastro" element={<SignupPage />} />
           <Route path="/habitos" element={<HabitsPage />} />
           <Route path="/hoje" element={<TodayPage />} />
           <Route path="/historico" element={<HistoryPage />} />
         </Routes>
+
+        {token !== '' && <Footer />}
+
       </TokenContext.Provider>
     </BrowserRouter>
   );

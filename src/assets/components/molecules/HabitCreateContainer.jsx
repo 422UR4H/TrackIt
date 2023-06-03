@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
-import StyledForm from '../atoms/Form';
-import Button from '../atoms/Button';
-import axios from 'axios';
-import URL from '../../../scripts/constants';
+import { useContext, useState } from 'react';
 import { TokenContext } from '../../../scripts/TokenContext';
 import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
+import Button from '../atoms/Button';
+import StyledForm from '../atoms/Form';
+import styled from 'styled-components';
+import axios from 'axios';
+import URL from '../../../scripts/constants';
 
 
 export default function HabitCreateContainer({ setIsAddingHabit }) {

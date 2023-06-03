@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
-
 
 export default function ContainerCheckBoxes({ checkboxes, setCheckboxes }) {
     function handleChange({ target }) {
@@ -30,7 +28,6 @@ export default function ContainerCheckBoxes({ checkboxes, setCheckboxes }) {
         </StyledCheckBoxes>
     );
 }
-
 
 const StyledCheckBoxes = styled.div`
     margin-top: 4px;

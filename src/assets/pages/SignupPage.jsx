@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import StyledTemplate from '../components/styles/StyledTemplate';
-import Logo from '../components/atoms/Logo';
 import StyledForm from '../components/atoms/Form';
 import Button from '../components/atoms/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../components/atoms/Logo';
 import axios from 'axios';
 import URL from '../../scripts/constants';
+
 
 export default function SignupPage() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
+  const [password, setPassword] = useState('');
 
 
   function signup(e) {

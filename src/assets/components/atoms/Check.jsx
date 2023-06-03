@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import checkImg from '../../images/check.svg';
 
@@ -9,7 +8,6 @@ export default function Check({ isChecked }) {
         </StyledCheck>
     );
 }
-
 
 const StyledCheck = styled.div`
     background-color: ${({ isChecked }) => isChecked ? '#8FC549' : '#EBEBEB'};

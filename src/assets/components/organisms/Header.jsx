@@ -1,13 +1,12 @@
-import React from 'react';
 import styled from 'styled-components';
 import logoMini from '../../images/logo-mini.svg';
-import userIcon from '../../images/user-icon.png';
 
-export default function Header() {
+export default function Header({ icon }) {
+
     return (
         <StyledHeader>
             <img src={logoMini} alt="TrackIt" />
-            <img src={userIcon} alt="User Icon" />
+            <img className="user-icon" src={icon} alt="User Icon" />
         </StyledHeader>
     );
 }
@@ -26,4 +25,10 @@ const StyledHeader = styled.header`
     position: fixed;
     left: 0;
     top: 0;
+
+    .user-icon {
+        width: 51px;
+        height: 51px;
+        border-radius: 50%;
+    }
 `;

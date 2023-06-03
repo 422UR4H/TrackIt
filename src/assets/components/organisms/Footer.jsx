@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import TodayButton from '../molecules/TodayButton';
 import { Link, useNavigate } from 'react-router-dom';
