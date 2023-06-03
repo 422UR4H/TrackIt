@@ -1,49 +1,65 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import StyledForm from '../atoms/Form';
-import { Link } from 'react-router-dom';
 import Button from '../atoms/Button';
+import axios from 'axios';
+import URL from '../../../scripts/constants';
+import { TokenContext } from '../../../scripts/TokenContext';
+import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 
-export default function Habit() {
+
+export default function HabitCreateContainer({ setIsAddingHabit }) {
+    const token = useContext(TokenContext);
+    const [name, setName] = useState('');
+    const [checkboxes, setCheckboxes] = useState([
+        { id: 'dom', label: 'D', isChecked: false },
+        { id: 'seg', label: 'S', isChecked: false },
+        { id: 'ter', label: 'T', isChecked: false },
+        { id: 'qua', label: 'Q', isChecked: false },
+        { id: 'qui', label: 'Q', isChecked: false },
+        { id: 'sex', label: 'S', isChecked: false },
+        { id: 'sab', label: 'S', isChecked: false }
+    ]);
+
+    function saveHabitCreated(e) {
+        e.preventDefault();
+
+        const days = [];
+        checkboxes.forEach((checkbox, i) => { checkbox.isChecked && days.push(i) });
+
+        axios
+            .post(URL.HABITS, {
+                name,
+                days
+            }, {
+                headers: { "Authorization": `Bearer ${token}` }
+            })
+            .then(({ data }) => alert("Habito salvo" + data))
+            .catch((error) => alert(error));
+
+        setIsAddingHabit(false);
+    }
+
     return (
-        <StyledHabit>
+        <StyledHabit onSubmit={saveHabitCreated}>
             <StyledForm>
-                <input type="text" placeholder="nome do hábito" />
+                <input type="text"
+                    placeholder="nome do hábito"
+                    value={name}
+                    onChange={({ target }) => setName(target.value)}
+                    required
+                />
 
-                <div className="container-checkboxes">
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">D</span>
-                    </label>
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">S</span>
-                    </label>
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">T</span>
-                    </label>
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">Q</span>
-                    </label>
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">Q</span>
-                    </label>
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">S</span>
-                    </label>
-                    <label className="container">
-                        <input type="checkbox" />
-                        <span className="checkmark">S</span>
-                    </label>
-                </div>
+                <ContainerCheckBoxes
+                    checkboxes={checkboxes}
+                    setCheckboxes={setCheckboxes}
+                />
 
                 <div className="container-buttons">
-                    <button className="cancel" type="button">Cancelar</button>
-                    <Button type="sumbit" text="Salvar" />
+                    <button className="cancel" type="button" onClick={() => {
+                        setIsAddingHabit(false);
+                    }}>Cancelar</button>
+                    <Button type="submit" text="Salvar" />
                 </div>
             </StyledForm>
         </StyledHabit>
@@ -63,49 +79,6 @@ const StyledHabit = styled.div`
     align-items: center;
 
     form {
-        .container-checkboxes {
-            margin-top: 4px;
-            font-size: 20px;
-            display: flex;
-            justify-content: flex-start;
-            
-            .container {
-                width: 30px;
-                height: 30px;
-                margin-right: 4px;
-                border-radius: 5px;
-
-                display: block;
-                position: relative;
-            }
-
-            .checkmark {
-                color: #DBDBDB;
-                text-align: center;
-
-                width: inherit;
-                height: inherit;
-                border: 1px solid #DBDBDB;
-                border-radius: inherit;
-
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                z-index: 1;
-            }
-
-            input {
-                width: 0px;
-                height: 0px;
-                opacity: 0;
-            }
-
-            .container input:checked ~ .checkmark {
-                background-color: #DBDBDB;
-                color: white;
-            }
-        }
-
         .cancel {
             background-color: inherit;
             color: #52B6FF;

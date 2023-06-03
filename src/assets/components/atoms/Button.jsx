@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import loading from '../../images/load.png';
 
-export default function Button({ text, disabled }) {
+export default function Button({ text, disabled, onClick }) {
     return (
-        <StyledButton disabled={disabled}>
+        <StyledButton disabled={disabled} onClick={onClick}>
             {disabled ? <img src={loading} alt="..." /> : text}
         </StyledButton>
     );

@@ -9,6 +9,7 @@ import URL from '../../scripts/constants';
 
 export default function SignupPage() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -17,6 +18,8 @@ export default function SignupPage() {
 
   function signup(e) {
     e.preventDefault();
+
+    setIsLoading(true);
 
     axios
       .post(URL.SIGNUP, {
@@ -31,6 +34,7 @@ export default function SignupPage() {
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
       });
   }
 
@@ -44,26 +48,30 @@ export default function SignupPage() {
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           required
+          disabled={isLoading}
         />
         <input type="password"
           placeholder="senha"
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           required
+          disabled={isLoading}
         />
         <input type="text"
           placeholder="nome"
           value={name}
           onChange={({ target }) => setName(target.value)}
           required
+          disabled={isLoading}
         />
         <input type="url"
           placeholder="foto"
           value={image}
           onChange={({ target }) => setImage(target.value)}
+          disabled={isLoading}
         />
 
-        <Button type="submit" text="Cadastrar" />
+        <Button type="submit" text="Cadastrar" disabled={isLoading} />
 
       </StyledForm>
       <Link to="/">
