@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function ContainerCheckBoxes({ checkboxes, setCheckboxes }) {
+export default function ContainerCheckBoxes({ checkboxes, setCheckboxes, disabled }) {
     function handleChange({ target }) {
         setCheckboxes(checkboxes.map((checkbox) =>
             target.id === checkbox.id ?
@@ -11,7 +11,7 @@ export default function ContainerCheckBoxes({ checkboxes, setCheckboxes }) {
 
     return (
         <StyledCheckBoxes>
-            {checkboxes.map((checkbox) => (
+            {checkboxes.map((checkbox) => 
                 <label key={checkbox.id} className="container">
                     <input
                         type="checkbox"
@@ -19,15 +19,20 @@ export default function ContainerCheckBoxes({ checkboxes, setCheckboxes }) {
                         checked={checkbox.isChecked}
                         value={checkbox.isChecked}
                         onChange={handleChange}
+                        disabled={disabled}
                     />
                     <span className="checkmark">
                         {checkbox.label}
                     </span>
                 </label>
-            ))}
+            )}
         </StyledCheckBoxes>
     );
 }
+
+ContainerCheckBoxes.defaultProps = {
+    disabled: false
+};
 
 const StyledCheckBoxes = styled.div`
     margin-top: 4px;

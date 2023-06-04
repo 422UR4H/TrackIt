@@ -2,31 +2,32 @@ import { useContext, useState } from 'react';
 import { TokenContext } from '../../../scripts/TokenContext';
 import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 import Button from '../atoms/Button';
-import StyledForm from '../atoms/Form';
+import Form from '../atoms/Form';
 import styled from 'styled-components';
 import axios from 'axios';
 import URL from '../../../scripts/constants';
 
 
-export default function HabitCreateContainer({ setIsAddingHabit }) {
+export default function HabitCreateContainer({ setIsAddingHabit, loadHabits }) {
     const token = useContext(TokenContext);
     const [name, setName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const [checkboxes, setCheckboxes] = useState([
-        { id: 'dom', label: 'D', isChecked: false },
-        { id: 'seg', label: 'S', isChecked: false },
-        { id: 'ter', label: 'T', isChecked: false },
-        { id: 'qua', label: 'Q', isChecked: false },
-        { id: 'qui', label: 'Q', isChecked: false },
-        { id: 'sex', label: 'S', isChecked: false },
-        { id: 'sab', label: 'S', isChecked: false }
+      { id: 'dom', label: 'D', isChecked: false },
+      { id: 'seg', label: 'S', isChecked: false },
+      { id: 'ter', label: 'T', isChecked: false },
+      { id: 'qua', label: 'Q', isChecked: false },
+      { id: 'qui', label: 'Q', isChecked: false },
+      { id: 'sex', label: 'S', isChecked: false },
+      { id: 'sab', label: 'S', isChecked: false }
     ]);
 
     function saveHabitCreated(e) {
         e.preventDefault();
 
+        setIsLoading(true);
         const days = [];
         checkboxes.forEach((checkbox, i) => { checkbox.isChecked && days.push(i) });
-
         axios
             .post(URL.HABITS, {
                 name,
@@ -34,34 +35,52 @@ export default function HabitCreateContainer({ setIsAddingHabit }) {
             }, {
                 headers: { "Authorization": `Bearer ${token}` }
             })
-            .then(({ data }) => alert("Habito salvo" + data))
-            .catch((error) => alert(error));
+            .then(({ data }) => {
+                setIsLoading(false);
 
-        setIsAddingHabit(false);
+                // clean fields
+                setName('');
+                setCheckboxes(checkboxes.map((checkbox) => (
+                    { ...checkbox, isChecked: false }
+                )));
+
+                setIsAddingHabit(false);
+                loadHabits();
+            })
+            .catch((error) => {
+                setIsLoading(false);
+                alert(error);
+            });
     }
 
     return (
-        <StyledHabit onSubmit={saveHabitCreated}>
-            <StyledForm>
+        <StyledHabit>
+            <Form onSubmit={saveHabitCreated}>
                 <input type="text"
                     placeholder="nome do hábito"
                     value={name}
                     onChange={({ target }) => setName(target.value)}
                     required
+                    disabled={isLoading}
                 />
 
                 <ContainerCheckBoxes
                     checkboxes={checkboxes}
                     setCheckboxes={setCheckboxes}
+                    disabled={isLoading}
                 />
 
                 <div className="container-buttons">
-                    <button className="cancel" type="button" onClick={() => {
-                        setIsAddingHabit(false);
-                    }}>Cancelar</button>
-                    <Button type="submit" text="Salvar" />
+                    <button className="cancel"
+                        type="button"
+                        disabled={isLoading}
+                        onClick={() => { setIsAddingHabit(false) }}
+                    >
+                        Cancelar
+                    </button>
+                    <Button type="submit" text="Salvar" disabled={isLoading} />
                 </div>
-            </StyledForm>
+            </Form>
         </StyledHabit>
     );
 }
@@ -70,8 +89,9 @@ export default function HabitCreateContainer({ setIsAddingHabit }) {
 const StyledHabit = styled.div`
     background-color: white;
     width: 340px;
-    height: 180px;
-    margin-top: 20px;
+    min-height: 182px;
+    margin-bottom: 10px;
+    padding-block: 10px;
     border-radius: 5px;
 
     display: flex;

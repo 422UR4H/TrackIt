@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import loading from '../../images/load.png';
+import load from '../../images/load.png';
 
 export default function Button({ text, disabled, onClick }) {
     return (
         <StyledButton disabled={disabled} onClick={onClick}>
-            {disabled ? <img src={loading} alt="..." /> : text}
+            {disabled ? <img src={load} alt="..." /> : text}
         </StyledButton>
     );
 }
@@ -27,6 +27,5 @@ const StyledButton = styled.button`
 
     &:disabled {
         opacity: 0.7;
-        padding-top: 15px;
     }
 `;

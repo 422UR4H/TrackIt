@@ -1,11 +1,14 @@
+import { useContext } from 'react';
+import { TokenContext } from '../../../scripts/TokenContext';
 import styled from 'styled-components';
 import logoMini from '../../images/logo-mini.svg';
 
 export default function Header({ icon }) {
+    const token = useContext(TokenContext);
 
     return (
         <StyledHeader>
-            <img src={logoMini} alt="TrackIt" />
+            <img src={token !== "" && logoMini} alt="TrackIt" />
             <img className="user-icon" src={icon} alt="User Icon" />
         </StyledHeader>
     );
@@ -25,6 +28,7 @@ const StyledHeader = styled.header`
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 2;
 
     .user-icon {
         width: 51px;

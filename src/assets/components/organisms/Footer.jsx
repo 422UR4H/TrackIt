@@ -22,7 +22,7 @@ const StyledFooter = styled.div`
     position: fixed;
     left: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
 
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;

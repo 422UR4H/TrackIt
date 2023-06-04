@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 const StyledTemplate = styled.div`
-  margin-top: 68px;
+  background-color: white;
+  height: 100vh;
+  padding-top: 68px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  img {
+  &>img {
     margin-bottom: 30px;
   }
 
