@@ -8,8 +8,8 @@ export default function Header({ icon }) {
 
     return (
         <StyledHeader>
-            <img src={token !== "" && logoMini} alt="TrackIt" />
-            <img className="user-icon" src={icon} alt="User Icon" />
+            <img src={logoMini} alt="TrackIt" />
+            <img className="user-icon" src={token !== "" && icon} alt="User Icon" />
         </StyledHeader>
     );
 }
@@ -28,7 +28,7 @@ const StyledHeader = styled.header`
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 2;
+    z-index: 3;
 
     .user-icon {
         width: 51px;

@@ -8,20 +8,18 @@ import axios from 'axios';
 import URL from '../../../scripts/constants';
 
 
-export default function HabitCreateContainer({ setIsAddingHabit, loadHabits }) {
+export default function HabitCreateContainer(props) {
+    const {
+        setIsAddingHabit,
+        loadHabits,
+        name, setName,
+        checkboxes, setCheckboxes
+    } = props;
+    
     const token = useContext(TokenContext);
-    const [name, setName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [checkboxes, setCheckboxes] = useState([
-      { id: 'dom', label: 'D', isChecked: false },
-      { id: 'seg', label: 'S', isChecked: false },
-      { id: 'ter', label: 'T', isChecked: false },
-      { id: 'qua', label: 'Q', isChecked: false },
-      { id: 'qui', label: 'Q', isChecked: false },
-      { id: 'sex', label: 'S', isChecked: false },
-      { id: 'sab', label: 'S', isChecked: false }
-    ]);
 
+    
     function saveHabitCreated(e) {
         e.preventDefault();
 

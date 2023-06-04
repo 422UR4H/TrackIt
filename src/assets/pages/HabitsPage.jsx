@@ -6,11 +6,24 @@ import styled from 'styled-components';
 import axios from 'axios';
 import URL from '../../scripts/constants';
 import HabitContainer from '../components/molecules/HabitContainer';
+import { useNavigate } from 'react-router-dom';
 
 export default function HabitsPage() {
   const token = useContext(TokenContext);
+  const navigate = useNavigate();
   const [habits, setHabits] = useState([]);
   const [isAddingHabit, setIsAddingHabit] = useState(false);
+  const [name, setName] = useState('');
+  const [checkboxes, setCheckboxes] = useState([
+    { id: 'dom', label: 'D', isChecked: false },
+    { id: 'seg', label: 'S', isChecked: false },
+    { id: 'ter', label: 'T', isChecked: false },
+    { id: 'qua', label: 'Q', isChecked: false },
+    { id: 'qui', label: 'Q', isChecked: false },
+    { id: 'sex', label: 'S', isChecked: false },
+    { id: 'sab', label: 'S', isChecked: false }
+  ]);
+
 
   function loadHabits() {
     axios
@@ -38,6 +51,10 @@ export default function HabitsPage() {
         <HabitCreateContainer
           setIsAddingHabit={setIsAddingHabit}
           loadHabits={loadHabits}
+          name={name}
+          setName={setName}
+          checkboxes={checkboxes}
+          setCheckboxes={setCheckboxes}
         />
       }
       {habits.length === 0 ?
@@ -59,7 +76,7 @@ const StyledHabitsPage = styled.div`
   font-size: 23px;
   line-height: 29px;
 
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 70px;
   padding-inline: 18px;
   margin-bottom: 110px;
@@ -71,7 +88,6 @@ const StyledHabitsPage = styled.div`
   button {
     height: 35px;
     padding-top: 0;
-    /* margin-bottom: ${({ habitsEmpty }) => habitsEmpty ? '20px' : '0px'}; */
   }
 
   .top {

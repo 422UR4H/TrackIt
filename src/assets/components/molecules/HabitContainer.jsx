@@ -1,6 +1,7 @@
-import styled from 'styled-components';
-import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import dump from '../../images/dump.svg';
+import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 
 export default function HabitContainer({ name, days }) {
     const [checkboxes, setCheckboxes] = useState([
@@ -22,19 +23,22 @@ export default function HabitContainer({ name, days }) {
     // function deleteHabit(id) {
     //   axios // pesquisar como usar delete com axios
     //     .delete(URL.HABITS + `/${id}`, {
-    //       headers: { "Authorization": `Bearer ${token}` }
-    //     })
+        //       headers: { "Authorization": `Bearer ${token}` }
+        //     })
     //     .then((message) => {
     //       console.log(message);
     //     })
     //     .catch((error) => {
-    //       console.error(error);
-    //     })
+        //       console.error(error);
+        //     })
     // }
   
     return (
         <StyledHabitContainer>
             <h1>{name}</h1>
+            <button>
+                <img src={dump} alt="" />
+            </button>
             <ContainerCheckBoxes
                 checkboxes={checkboxes}
                 setCheckboxes={setCheckboxes}
@@ -53,10 +57,27 @@ const StyledHabitContainer = styled.div`
     margin-bottom: 10px;
     border-radius: 5px;
 
+    position: relative;
+
     h1 {
         color: #666666;
         font-size: 20px;
         line-height: 25px;
         margin-bottom: 8px;
+    }
+
+    button {
+        width: 13px;
+        height: 15px;
+        border: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        z-index: 2;
     }
 `;
