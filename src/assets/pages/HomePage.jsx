@@ -60,7 +60,7 @@ export default function HomePage({ setToken, setIcon }) {
         <Button type="submit"
           text="Entrar"
           disabled={isLoading}
-          data-test="login-btn"
+          dataTest="login-btn"
         />
       </Form>
 
