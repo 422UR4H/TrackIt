@@ -85,7 +85,7 @@ const StyledHabitsPage = styled.div`
   font-size: 23px;
   line-height: 29px;
 
-  min-height: 100vh;
+  height: 100%;
   margin-top: 70px;
   padding-inline: 18px;
   margin-bottom: 110px;
