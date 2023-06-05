@@ -38,10 +38,10 @@ export default function SignupPage() {
         console.error(error);
         if (error.response.status === 409) {
           alert("Email já cadastrado!");
+        } else {
+          alert("Erro desconhecido. Tente novamente mais tarde!");
         }
-        // if (isLoading) {
         setIsLoading(false);
-        // }
       });
   }
 

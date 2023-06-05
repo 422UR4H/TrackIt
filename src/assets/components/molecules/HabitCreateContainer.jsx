@@ -23,6 +23,11 @@ export default function HabitCreateContainer(props) {
     function saveHabitCreated(e) {
         e.preventDefault();
 
+        if (name === "") {
+            alert("Insira um nome válido para o hábito");
+            return;
+        }
+        
         setIsLoading(true);
         const days = [];
         checkboxes.forEach((checkbox, i) => { checkbox.isChecked && days.push(i) });
@@ -58,7 +63,7 @@ export default function HabitCreateContainer(props) {
                     placeholder="nome do hábito"
                     value={name}
                     onChange={({ target }) => setName(target.value)}
-                    required
+                    // required
                     disabled={isLoading}
                     data-test="habit-name-input"
                 />
