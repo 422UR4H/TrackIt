@@ -60,7 +60,7 @@ const StyledCheckBoxes = styled.div`
 
         width: inherit;
         height: inherit;
-        border: 1px solid #DBDBDB;
+        border: 1px solid #D4D4D4;
         border-radius: inherit;
 
         position: absolute;
@@ -76,7 +76,8 @@ const StyledCheckBoxes = styled.div`
     }
 
     .container input:checked ~ .checkmark {
-        background-color: #DBDBDB;
+        background-color: #CFCFCF;
+        border-color: #CFCFCF;
         color: white;
     }
 `;
