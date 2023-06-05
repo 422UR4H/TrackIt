@@ -11,4 +11,5 @@ export default function Logo() {
 
 const StyledLogo = styled.div`
     width: 180px;
+    margin-bottom: 30px;
 `;

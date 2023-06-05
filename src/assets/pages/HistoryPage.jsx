@@ -6,8 +6,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import dayjs from 'dayjs';
 import URL from '../../scripts/constants';
-import { formatDate } from 'react-calendar/dist/cjs/shared/dateFormatter';
-import { ptBR } from 'date-fns/locale';
+
 
 export default function HistoryPage() {
     const token = useContext(TokenContext);
@@ -37,10 +36,7 @@ export default function HistoryPage() {
                         {dayjs(date).format('DD')}
                     </div>
                 );
-            } else {
-                console.log(day);
             }
-
             if (day !== undefined) {
                 if (day.habits.find((h) => !h.done) === undefined) {
                     return (
@@ -56,9 +52,7 @@ export default function HistoryPage() {
                     );
                 }
             }
-        } catch (error) {
-            // console.log(dates);
-        }
+        } catch (error) { }
 
         return (
             <div className="day">
@@ -79,6 +73,7 @@ export default function HistoryPage() {
         </StyledHistoryPage>
     );
 }
+
 
 const StyledHistoryPage = styled.div`
     background-color: #F2F2F2;
@@ -105,12 +100,6 @@ const StyledHistoryPage = styled.div`
         line-height: 29px;
         margin-bottom: 17px;
     }
-
-    /* h2 {
-        color: #666666;
-        font-size: 18px;
-        line-height: 22px;
-    } */
 
     .day {
         width: 38px;

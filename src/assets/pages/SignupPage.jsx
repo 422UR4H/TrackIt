@@ -29,8 +29,7 @@ export default function SignupPage() {
         image,
         password
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         navigate("/");
       })
       .catch((error) => {

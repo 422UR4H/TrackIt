@@ -44,7 +44,6 @@ export default function HomePage({ setToken, setIcon }) {
           });
       } catch (error) {
         console.error(error);
-        console.log(user);
       }
     }
   }, []);

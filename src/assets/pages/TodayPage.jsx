@@ -18,7 +18,6 @@ export default function TodayPage({ setPercent }) {
         let habitsConcluded = 0;
 
         habits.forEach((habit) => {
-            console.log(habit.done);
             if (habit.done) {
                 habitsConcluded++;
             }
@@ -63,7 +62,6 @@ export default function TodayPage({ setPercent }) {
                 headers: { "Authorization": `Bearer ${token}` }
             })
             .then(({ data }) => {
-                console.log(data);
                 setHabits(data);
             })
             .catch((error) => {

@@ -9,10 +9,6 @@ const StyledTemplate = styled.div`
   flex-direction: column;
   align-items: center;
 
-  &>img {
-    margin-bottom: 30px;
-  }
-
   button {
     margin-bottom: 25px;
   }
