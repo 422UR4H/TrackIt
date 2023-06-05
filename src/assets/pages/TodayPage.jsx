@@ -107,7 +107,8 @@ const StyledTodayPage = styled.div`
     background-color: #F2F2F2;
     margin-top: 70px;
     padding-inline: 17px;
-    height: 100vh;
+    min-height: 100%;
+    margin-bottom: 110px;
 
     display: flex;
     align-items: center;
