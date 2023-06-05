@@ -17,6 +17,10 @@ const StyledHistoryPage = styled.div`
     padding-inline: 17px;
     height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .top {
         padding-block: 28px;
     }

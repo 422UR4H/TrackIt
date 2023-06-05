@@ -1,19 +1,40 @@
 import styled from 'styled-components';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { useContext } from 'react';
+import { PercentContext } from '../../../scripts/PercentContext';
+
 
 export default function TodayButton() {
+    const percent = useContext(PercentContext);
+    
     return (
-        <StyledTodayButton>Hoje</StyledTodayButton>
+        <StyledTodayButton>
+            <div>
+                <CircularProgressbar
+                    value={percent}
+                    text={'Hoje'}
+                    strokeWidth={10}
+                    styles={buildStyles({
+                        textSize: '22px',
+                        textColor: 'white',
+                        pathColor: 'white',
+                        trailColor: '#52B6FF'
+                    })}
+                />
+            </div>
+        </StyledTodayButton>
     );
 }
 
 const StyledTodayButton = styled.div`
     background-color: #52B6FF;
-    color: white;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 90px;
+    /* color: white; */
+    /* font-size: 18px; */
+    /* line-height: 22px; */
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    /* line-height: 90px; */
 
     width: 91px;
     height: 91px;
@@ -22,4 +43,19 @@ const StyledTodayButton = styled.div`
     position: absolute;
     bottom: 10px;
     left: calc(50% - 45px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    div {
+        background-color: inherit;
+        border-radius: inherit;
+
+        width: 79px;
+    }
 `;

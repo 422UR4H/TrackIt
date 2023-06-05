@@ -7,7 +7,7 @@ import URL from '../../scripts/constants';
 import dayjs from 'dayjs';
 
 
-export default function TodayPage() {
+export default function TodayPage({ setPercent }) {
     const token = useContext(TokenContext);
     const [habits, setHabits] = useState([]);
     let weekday = dayjs().locale('pt-br').format('dddd');
@@ -21,8 +21,9 @@ export default function TodayPage() {
                 habitsConcluded++;
             }
         })
-        console.log(habitsConcluded, habits.length);
-        return (habitsConcluded * 100 / habits.length).toFixed(0);
+        const percent = habitsConcluded * 100 / habits.length;
+        setPercent(percent);
+        return percent.toFixed(0);
     }
 
     function reFormatedWeekday() {
@@ -99,7 +100,12 @@ const StyledTodayPage = styled.div`
     padding-inline: 17px;
     height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .top {
+        width: 340px;
         padding-block: 28px;
     }
 

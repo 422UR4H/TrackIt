@@ -1,42 +1,50 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import dump from '../../images/dump.svg';
 import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
+import axios from 'axios';
+import { TokenContext } from '../../../scripts/TokenContext';
+import URL from '../../../scripts/constants';
 
-export default function HabitContainer({ name, days }) {
+export default function HabitContainer({ id, name, days, loadHabits }) {
+    const token = useContext(TokenContext);
     const [checkboxes, setCheckboxes] = useState([
-      { id: 'dom', label: 'D', isChecked: false },
-      { id: 'seg', label: 'S', isChecked: false },
-      { id: 'ter', label: 'T', isChecked: false },
-      { id: 'qua', label: 'Q', isChecked: false },
-      { id: 'qui', label: 'Q', isChecked: false },
-      { id: 'sex', label: 'S', isChecked: false },
-      { id: 'sab', label: 'S', isChecked: false }
+        { id: 'dom', label: 'D', isChecked: false },
+        { id: 'seg', label: 'S', isChecked: false },
+        { id: 'ter', label: 'T', isChecked: false },
+        { id: 'qua', label: 'Q', isChecked: false },
+        { id: 'qui', label: 'Q', isChecked: false },
+        { id: 'sex', label: 'S', isChecked: false },
+        { id: 'sab', label: 'S', isChecked: false }
     ]);
 
     useEffect(() => {
-        const updateCheckboxes = [ ...checkboxes ];
+        const updateCheckboxes = [...checkboxes];
         days.forEach((d) => updateCheckboxes[d].isChecked = true);
         setCheckboxes(updateCheckboxes);
     }, []);
 
-    // function deleteHabit(id) {
-    //   axios // pesquisar como usar delete com axios
-    //     .delete(URL.HABITS + `/${id}`, {
-        //       headers: { "Authorization": `Bearer ${token}` }
-        //     })
-    //     .then((message) => {
-    //       console.log(message);
-    //     })
-    //     .catch((error) => {
-        //       console.error(error);
-        //     })
-    // }
-  
+    function deleteHabit(id) {
+        if (!confirm("Apagar hábito?")) {
+            return;
+        }
+
+        axios // pesquisar como usar delete com axios
+            .delete(URL.HABITS + `/${id}`, {
+                headers: { "Authorization": `Bearer ${token}` }
+            })
+            .then((message) => {
+                loadHabits();
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+    }
+
     return (
         <StyledHabitContainer>
             <h1>{name}</h1>
-            <button>
+            <button onClick={() => deleteHabit(id)}>
                 <img src={dump} alt="" />
             </button>
             <ContainerCheckBoxes
@@ -67,6 +75,7 @@ const StyledHabitContainer = styled.div`
     }
 
     button {
+        background-color: inherit;
         width: 13px;
         height: 15px;
         border: none;

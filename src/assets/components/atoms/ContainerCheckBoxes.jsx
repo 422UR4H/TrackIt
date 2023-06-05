@@ -10,7 +10,7 @@ export default function ContainerCheckBoxes({ checkboxes, setCheckboxes, disable
     }
 
     return (
-        <StyledCheckBoxes>
+        <StyledCheckBoxes disabled={disabled}>
             {checkboxes.map((checkbox) => 
                 <label key={checkbox.id} className="container">
                     <input
@@ -48,6 +48,10 @@ const StyledCheckBoxes = styled.div`
 
         display: block;
         position: relative;
+    }
+    
+    .container:hover {
+        cursor: ${({ disabled }) => !disabled && "pointer"};
     }
 
     .checkmark {

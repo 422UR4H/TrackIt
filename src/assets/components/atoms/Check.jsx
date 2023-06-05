@@ -23,6 +23,9 @@ const StyledCheck = styled.div`
 
     button {
         background-color: inherit;
+        height: inherit;
+        width: inherit;
         border: none;
+        border-radius: inherit;
     }
 `;

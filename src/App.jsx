@@ -8,30 +8,34 @@ import HistoryPage from './assets/pages/HistoryPage';
 import { TokenContext } from './scripts/TokenContext';
 import Header from './assets/components/organisms/Header';
 import Footer from './assets/components/organisms/Footer';
+import { PercentContext } from './scripts/PercentContext';
 
 
 function App() {
-  const [token, setToken] = useState('');
   const [icon, setIcon] = useState('');
+  const [token, setToken] = useState('');
+  const [percent, setPercent] = useState(0);
 
   return (
     <BrowserRouter>
       <TokenContext.Provider value={token}>
+        <PercentContext.Provider value={percent}>
 
-        {token !== '' && <Header icon={icon} />}
+          {token !== '' && <Header icon={icon} />}
 
-        <Routes>
-          <Route path="/" element={
-            <HomePage setToken={setToken} setIcon={setIcon} />
-          } />
-          <Route path="/cadastro" element={<SignupPage />} />
-          <Route path="/habitos" element={<HabitsPage />} />
-          <Route path="/hoje" element={<TodayPage />} />
-          <Route path="/historico" element={<HistoryPage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={
+              <HomePage setToken={setToken} setIcon={setIcon} />
+            } />
+            <Route path="/cadastro" element={<SignupPage />} />
+            <Route path="/habitos" element={<HabitsPage />} />
+            <Route path="/hoje" element={<TodayPage setPercent={setPercent} />} />
+            <Route path="/historico" element={<HistoryPage />} />
+          </Routes>
 
-        {token !== '' && <Footer />}
+          {token !== '' && <Footer />}
 
+        </PercentContext.Provider>
       </TokenContext.Provider>
     </BrowserRouter>
   );

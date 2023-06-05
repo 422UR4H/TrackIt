@@ -19,7 +19,7 @@ export default function HabitCreateContainer(props) {
     const token = useContext(TokenContext);
     const [isLoading, setIsLoading] = useState(false);
 
-    
+
     function saveHabitCreated(e) {
         e.preventDefault();
 
@@ -97,23 +97,40 @@ const StyledHabit = styled.div`
     align-items: center;
 
     form {
-        .cancel {
-            background-color: inherit;
-            color: #52B6FF;
-            border: none;
-            margin-right: 15px;
-        }
-
-        button {
-            font-size: 16px;
-            line-height: 20px;
-            text-align: center;
-            width: 84px;
-        }
-
         .container-buttons {
+            height: 35px;
             margin-top: 30px;
             padding-left: 120px;
+
+            position: relative;
+
+            .cancel {
+                background-color: inherit;
+                color: #52B6FF;
+                border: none;
+                padding-top: 0;
+
+                position: absolute;
+                right: 100px;
+
+                &:disabled {
+                    padding-top: 0;
+                }
+            }
+    
+            button {
+                font-size: 16px;
+                line-height: 20px;
+                text-align: center;
+                width: 84px;
+
+                position: absolute;
+                right: 0;
+
+                &:disabled {
+                    padding-top: 20px;
+                }
+            }
         }
     }
 `;
