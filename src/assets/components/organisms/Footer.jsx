@@ -10,7 +10,7 @@ export default function Footer() {
             <Link to="/habitos" data-test="habit-link">Hábitos</Link>
 
             <div className="center" data-test="today-link" onClick={() => {
-                navigate("/hoje")
+                navigate("/hoje");
             }}>
                 <TodayButton />
             </div>

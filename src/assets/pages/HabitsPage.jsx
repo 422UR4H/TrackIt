@@ -39,7 +39,7 @@ export default function HabitsPage() {
         if (localStorage.getItem("user") !== null) {
           navigate("/");
         }
-      })
+      });
   }
 
   useEffect(loadHabits, []);

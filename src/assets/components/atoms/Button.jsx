@@ -18,7 +18,7 @@ export default function Button({ text, disabled, onClick, dataTest }) {
 
 Button.defaultProps = {
     disabled: false
-}
+};
 
 const StyledButton = styled.button`
     background-color: #52B6FF;

@@ -19,7 +19,7 @@ export default function HomePage({ setToken, setIcon }) {
     setToken(data.token);
     setIcon(data.image);
     navigate("/hoje");
-    
+
     // PERSISTENCE
     localStorage.setItem("user", JSON.stringify(data));
   }
@@ -41,7 +41,7 @@ export default function HomePage({ setToken, setIcon }) {
           })
           .catch((error) => {
             console.error(error);
-          })
+          });
       } catch (error) {
         console.error(error);
         console.log(user);
@@ -65,7 +65,7 @@ export default function HomePage({ setToken, setIcon }) {
       .catch((error) => {
         setIsLoading(false);
         alert(error);
-      })
+      });
   }
 
   return (

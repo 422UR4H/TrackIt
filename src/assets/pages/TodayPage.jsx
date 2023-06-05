@@ -22,7 +22,7 @@ export default function TodayPage({ setPercent }) {
             if (habit.done) {
                 habitsConcluded++;
             }
-        })
+        });
         const percent = habitsConcluded * 100 / habits.length;
         setPercent(percent);
         return percent.toFixed(0);
@@ -71,7 +71,7 @@ export default function TodayPage({ setPercent }) {
                 if (localStorage.getItem("user") !== null) {
                     navigate("/");
                 }
-            })
+            });
     }
 
     useEffect(loadHabits, []);

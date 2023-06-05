@@ -33,12 +33,8 @@ export default function HabitContainer({ id, name, days, loadHabits }) {
             .delete(URL.HABITS + `/${id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
             })
-            .then((message) => {
-                loadHabits();
-            })
-            .catch((error) => {
-                console.error(error);
-            })
+            .then(loadHabits)
+            .catch((error) => console.error(error));
     }
 
     return (

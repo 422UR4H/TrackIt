@@ -30,7 +30,12 @@ export default function HabitCreateContainer(props) {
 
         setIsLoading(true);
         const days = [];
-        checkboxes.forEach((checkbox, i) => { checkbox.isChecked && days.push(i) });
+        checkboxes.forEach((checkbox, i) => {
+            if (checkbox.isChecked) {
+                days.push(i);
+            }
+        });
+
         axios
             .post(URL.HABITS, {
                 name,
@@ -38,7 +43,7 @@ export default function HabitCreateContainer(props) {
             }, {
                 headers: { "Authorization": `Bearer ${token}` }
             })
-            .then(({ data }) => {
+            .then(() => {
                 setIsLoading(false);
 
                 // clean fields
@@ -78,7 +83,7 @@ export default function HabitCreateContainer(props) {
                     <button className="cancel"
                         type="button"
                         disabled={isLoading}
-                        onClick={() => { setIsAddingHabit(false) }}
+                        onClick={() => setIsAddingHabit(false)}
                         data-test="habit-create-cancel-btn"
                     >
                         Cancelar

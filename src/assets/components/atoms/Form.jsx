@@ -5,7 +5,7 @@ export default function Form({ children, onSubmit }) {
         <StyledForm onSubmit={onSubmit}>
             {children}
         </StyledForm>
-    )
+    );
 }
 
 const StyledForm = styled.form`
