@@ -11,6 +11,10 @@ export default function Check({ isChecked, setChecked }) {
     );
 }
 
+Check.defaultProps = {
+    setChecked: () => {}
+};
+
 const StyledCheck = styled.div`
     background-color: ${({ isChecked }) => isChecked ? '#8FC549' : '#EBEBEB'};
     height: 69px;

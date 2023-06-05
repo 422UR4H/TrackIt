@@ -1,16 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
 import { TokenContext } from '../../scripts/TokenContext';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import dayjs from 'dayjs';
 import URL from '../../scripts/constants';
+import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-calendar';
+import HabitHistoryContainer from '../components/molecules/HabitHistoryContainer';
 
 
 export default function HistoryPage() {
     const token = useContext(TokenContext);
+    const navigate = useNavigate();
     const [dates, setDates] = useState(new Date());
+    const [habits, setHabits] = useState([]);
 
     useEffect(() => {
         axios
@@ -21,8 +25,12 @@ export default function HistoryPage() {
                 setDates(data);
             })
             .catch((error) => {
-                alert("Não foi possível renderizar o calendário no momento.");
                 console.error(error);
+                if (localStorage.getItem("user") !== null) {
+                    navigate("/");
+                } else {
+                    alert("Não foi possível renderizar o calendário no momento.");
+                }
             });
     }, []);
 
@@ -61,6 +69,16 @@ export default function HistoryPage() {
         );
     }
 
+    function showHabitsDay(value, event) {
+        const firstClassName = event.target.classList[0];
+        if (firstClassName === "red" || firstClassName === "green") {
+            const day = dates.find((d) => d.day === dayjs(value).format('DD/MM/YYYY'));
+            setHabits(day.habits);
+        } else {
+            setHabits([]);
+        }
+    }
+
     return (
         <StyledHistoryPage>
             <div className="top">
@@ -68,8 +86,13 @@ export default function HistoryPage() {
                 <Calendar data-test="calendar"
                     calendarType='US'
                     formatDay={customDayFormatting}
+                    onClickDay={showHabitsDay}
                 />
             </div>
+
+            {habits.length > 0 && habits.map((habit) => (
+                <HabitHistoryContainer key={habit.id} habit={habit} />
+            ))}
         </StyledHistoryPage>
     );
 }
@@ -79,7 +102,8 @@ const StyledHistoryPage = styled.div`
     background-color: #F2F2F2;
     margin-top: 70px;
     padding-inline: 17px;
-    height: 100vh;
+    min-height: 100%;
+    margin-bottom: 110px;
 
     display: flex;
     flex-direction: column;
@@ -89,6 +113,7 @@ const StyledHistoryPage = styled.div`
         padding-block: 28px;
 
         &>div {
+            width: 340px;
             border: none;
             border-radius: 10px;
         }
