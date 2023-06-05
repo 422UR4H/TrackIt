@@ -7,9 +7,14 @@ export default function Header({ icon }) {
     const token = useContext(TokenContext);
 
     return (
-        <StyledHeader>
+        <StyledHeader data-test="header">
             <img src={logoMini} alt="TrackIt" />
-            <img className="user-icon" src={token !== "" && icon} alt="User Icon" />
+            <img
+                className="user-icon"
+                src={token !== "" ? icon : ""}
+                alt="User Icon"
+                data-test="avatar"
+            />
         </StyledHeader>
     );
 }

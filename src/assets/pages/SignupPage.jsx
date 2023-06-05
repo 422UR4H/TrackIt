@@ -53,6 +53,7 @@ export default function SignupPage() {
           onChange={({ target }) => setEmail(target.value)}
           disabled={isLoading}
           required
+          data-test="email-input"
         />
         <input type="password"
           placeholder="senha"
@@ -60,6 +61,7 @@ export default function SignupPage() {
           onChange={({ target }) => setPassword(target.value)}
           disabled={isLoading}
           required
+          data-test="password-input"
         />
         <input type="text"
           placeholder="nome"
@@ -67,6 +69,7 @@ export default function SignupPage() {
           onChange={({ target }) => setName(target.value)}
           disabled={isLoading}
           required
+          data-test="user-name-input"
         />
         <input type="url"
           placeholder="foto"
@@ -74,12 +77,17 @@ export default function SignupPage() {
           onChange={({ target }) => setImage(target.value)}
           disabled={isLoading}
           required
+          data-test="user-image-input"
         />
 
-        <Button type="submit" text="Cadastrar" disabled={isLoading} />
+        <Button type="submit"
+          text="Cadastrar"
+          disabled={isLoading}
+          dataTest="signup-btn"
+        />
 
       </Form>
-      <Link to="/">
+      <Link to="/" data-test="login-link">
         Já tem uma conta? Faça login!
       </Link>
     </StyledTemplate>

@@ -25,7 +25,7 @@ export default function HomePage({ setToken, setIcon }) {
         email,
         password
       })
-      .then(({data}) => {
+      .then(({ data }) => {
         setToken(data.token);
         setIcon(data.image);
         navigate("/hoje");
@@ -47,6 +47,7 @@ export default function HomePage({ setToken, setIcon }) {
           onChange={({ target }) => setEmail(target.value)}
           required
           disabled={isLoading}
+          data-test="email-input"
         />
         <input type="password"
           placeholder="senha"
@@ -54,11 +55,16 @@ export default function HomePage({ setToken, setIcon }) {
           onChange={({ target }) => setPassword(target.value)}
           required
           disabled={isLoading}
+          data-test="password-input"
         />
-        <Button type="submit" text="Entrar" disabled={isLoading} />
+        <Button type="submit"
+          text="Entrar"
+          disabled={isLoading}
+          data-test="login-btn"
+        />
       </Form>
 
-      <Link to="/cadastro">
+      <Link to="/cadastro" data-test="signup-link">
         Não tem uma conta? Cadastre-se!
       </Link>
     </StyledTemplate>

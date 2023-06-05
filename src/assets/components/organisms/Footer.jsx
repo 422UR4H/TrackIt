@@ -6,10 +6,16 @@ export default function Footer() {
     const navigate = useNavigate();
 
     return (
-        <StyledFooter>
-            <Link to="/habitos">Hábitos</Link>
-            <div className="center" onClick={() => navigate("/hoje")}><TodayButton /></div>
-            <Link to="/historico">Histórico</Link>
+        <StyledFooter data-test="menu">
+            <Link to="/habitos" data-test="habit-link">Hábitos</Link>
+
+            <div className="center" data-test="today-link" onClick={() => {
+                navigate("/hoje")
+            }}>
+                <TodayButton />
+            </div>
+
+            <Link to="/historico" data-test="history-link">Histórico</Link>
         </StyledFooter>
     );
 }

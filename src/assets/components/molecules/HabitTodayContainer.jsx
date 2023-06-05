@@ -27,13 +27,15 @@ export default function HabitTodayContainer({ habit, loadHabits }) {
     }
 
     return (
-        <StyledHabisTodayContainer>
+        <StyledHabisTodayContainer data-test="today-habit-container">
             <div>
-                <h3>{name}</h3>
-                <p>Sequência atual: <span className={done ? 'green' : 'gray'}>
-                    {currentSequence} {currentSequence > 1 ? 'dias' : 'dia'}
-                </span></p>
-                <p>Seu recorde: <span className={
+                <h3 data-test="today-habit-name">{name}</h3>
+                <p data-test="today-habit-sequence">
+                    Sequência atual: <span className={done ? 'green' : 'gray'}>
+                        {currentSequence} {currentSequence > 1 ? 'dias' : 'dia'}
+                    </span>
+                </p>
+                <p data-test="today-habit-record">Seu recorde: <span className={
                     (highestSequence === currentSequence && highestSequence > 0) ?
                         'green' :
                         'gray'

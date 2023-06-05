@@ -42,9 +42,9 @@ export default function HabitContainer({ id, name, days, loadHabits }) {
     }
 
     return (
-        <StyledHabitContainer>
-            <h1>{name}</h1>
-            <button onClick={() => deleteHabit(id)}>
+        <StyledHabitContainer data-test="habit-container">
+            <h1 data-test="habit-name">{name}</h1>
+            <button onClick={() => deleteHabit(id)} data-test="habit-delete-btn">
                 <img src={dump} alt="" />
             </button>
             <ContainerCheckBoxes

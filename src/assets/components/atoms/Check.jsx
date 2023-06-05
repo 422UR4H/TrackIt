@@ -3,7 +3,7 @@ import checkImg from '../../images/check.svg';
 
 export default function Check({ isChecked, setChecked }) {
     return (
-        <StyledCheck isChecked={isChecked}>
+        <StyledCheck isChecked={isChecked} data-test="today-habit-check-btn">
             <button onClick={setChecked}>
                 <img src={checkImg} alt={isChecked ? 'concluído' : 'não concluído'} />
             </button>

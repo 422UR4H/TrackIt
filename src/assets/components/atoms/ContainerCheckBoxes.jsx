@@ -12,7 +12,7 @@ export default function ContainerCheckBoxes({ checkboxes, setCheckboxes, disable
     return (
         <StyledCheckBoxes disabled={disabled}>
             {checkboxes.map((checkbox) => 
-                <label key={checkbox.id} className="container">
+                <label key={checkbox.id} className="container" data-test="habit-day">
                     <input
                         type="checkbox"
                         id={checkbox.id}

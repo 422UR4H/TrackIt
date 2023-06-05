@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import load from '../../images/load.png';
 import { ThreeDots } from 'react-loader-spinner';
 
-export default function Button({ text, disabled, onClick }) {
+export default function Button({ text, disabled, onClick, dataTest }) {
     return (
-        <StyledButton disabled={disabled} onClick={onClick}>
+        <StyledButton disabled={disabled} onClick={onClick} data-test={dataTest}>
             {/* {disabled ? <img src={load} alt="..." /> : text} */}
             {disabled ?
                 <ThreeDots

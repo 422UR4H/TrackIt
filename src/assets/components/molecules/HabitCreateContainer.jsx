@@ -15,7 +15,7 @@ export default function HabitCreateContainer(props) {
         name, setName,
         checkboxes, setCheckboxes
     } = props;
-    
+
     const token = useContext(TokenContext);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -52,7 +52,7 @@ export default function HabitCreateContainer(props) {
     }
 
     return (
-        <StyledHabit>
+        <StyledHabit data-test="habit-create-container">
             <Form onSubmit={saveHabitCreated}>
                 <input type="text"
                     placeholder="nome do hábito"
@@ -60,6 +60,7 @@ export default function HabitCreateContainer(props) {
                     onChange={({ target }) => setName(target.value)}
                     required
                     disabled={isLoading}
+                    data-test="habit-name-input"
                 />
 
                 <ContainerCheckBoxes
@@ -73,10 +74,15 @@ export default function HabitCreateContainer(props) {
                         type="button"
                         disabled={isLoading}
                         onClick={() => { setIsAddingHabit(false) }}
+                        data-test="habit-create-cancel-btn"
                     >
                         Cancelar
                     </button>
-                    <Button type="submit" text="Salvar" disabled={isLoading} />
+                    <Button type="submit"
+                        text="Salvar"
+                        disabled={isLoading}
+                        dataTest="habit-create-save-btn"
+                    />
                 </div>
             </Form>
         </StyledHabit>

@@ -44,7 +44,11 @@ export default function HabitsPage() {
     <StyledHabitsPage habitsEmpty={habits.length === 0}>
       <div className="top">
         Meus Hábitos
-        <Button text="+" onClick={() => setIsAddingHabit(true)} />
+        <Button
+          text="+"
+          onClick={() => setIsAddingHabit(true)}
+          dataTest="habit-create-btn"
+        />
       </div>
       {isAddingHabit &&
         <HabitCreateContainer

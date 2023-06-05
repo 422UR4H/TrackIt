@@ -74,11 +74,15 @@ export default function TodayPage({ setPercent }) {
     return (
         <StyledTodayPage>
             <div className="top">
-                <h1>{reFormatedWeekday()}</h1>
+                <h1 data-test="today">{reFormatedWeekday()}</h1>
 
                 {habits.find((habit) => habit.done) === undefined ?
-                    <h2>Nenhum hábito concluído ainda</h2> :
-                    <h4>{percentConcluded()}% dos hábitos concluídos</h4>
+                    <h2 data-test="today-counter">
+                        Nenhum hábito concluído ainda
+                    </h2> :
+                    <h4 data-test="today-counter">
+                        {percentConcluded()}% dos hábitos concluídos
+                    </h4>
                 }
             </div>
 
