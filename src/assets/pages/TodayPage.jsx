@@ -1,13 +1,15 @@
 import { useState, useContext, useEffect } from 'react';
 import { TokenContext } from '../../scripts/TokenContext';
+import { useNavigate } from 'react-router-dom';
 import HabitTodayContainer from '../components/molecules/HabitTodayContainer';
 import styled from 'styled-components';
 import axios from 'axios';
-import URL from '../../scripts/constants';
 import dayjs from 'dayjs';
+import URL from '../../scripts/constants';
 
 
 export default function TodayPage({ setPercent }) {
+    const navigate = useNavigate();
     const token = useContext(TokenContext);
     const [habits, setHabits] = useState([]);
     let weekday = dayjs().locale('pt-br').format('dddd');
@@ -66,6 +68,9 @@ export default function TodayPage({ setPercent }) {
             })
             .catch((error) => {
                 console.log(error);
+                if (localStorage.getItem("user") !== null) {
+                    navigate("/");
+                }
             })
     }
 
@@ -105,8 +110,8 @@ const StyledTodayPage = styled.div`
     height: 100vh;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
 
     .top {
         width: 340px;

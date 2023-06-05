@@ -6,9 +6,11 @@ import styled from 'styled-components';
 import axios from 'axios';
 import URL from '../../scripts/constants';
 import HabitContainer from '../components/molecules/HabitContainer';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function HabitsPage() {
+  const navigate = useNavigate();
   const token = useContext(TokenContext);
   const [isAddingHabit, setIsAddingHabit] = useState(false);
   const [habits, setHabits] = useState([]);
@@ -30,11 +32,13 @@ export default function HabitsPage() {
         headers: { "Authorization": `Bearer ${token}` }
       })
       .then(({ data }) => {
-        // console.log(data);
         setHabits(data);
       })
       .catch((error) => {
         console.error(error);
+        if (localStorage.getItem("user") !== null) {
+          navigate("/");
+        }
       })
   }
 
@@ -85,7 +89,7 @@ const StyledHabitsPage = styled.div`
   font-size: 23px;
   line-height: 29px;
 
-  height: 100%;
+  min-height: 100%;
   margin-top: 70px;
   padding-inline: 18px;
   margin-bottom: 110px;
@@ -114,8 +118,8 @@ const StyledHabitsPage = styled.div`
   }
 
   p {
-    width: 340px;
     color: #666666;
+    width: 340px;
     font-size: 18px;
     line-height: 22px;
     margin-top: 28px;

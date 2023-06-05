@@ -35,10 +35,10 @@ const StyledFooter = styled.div`
     align-items: center;
 
     a {
+        color: #52B6FF;
         font-size: 18px;
         line-height: 22px;
         text-align: center;
-        color: #52B6FF;
         text-decoration: none;
     }
 

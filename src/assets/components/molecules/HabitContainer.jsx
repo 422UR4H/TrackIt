@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import dump from '../../images/dump.svg';
+import { TokenContext } from '../../../scripts/TokenContext';
 import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 import axios from 'axios';
-import { TokenContext } from '../../../scripts/TokenContext';
+import styled from 'styled-components';
+import dump from '../../images/dump.svg';
 import URL from '../../../scripts/constants';
 
 export default function HabitContainer({ id, name, days, loadHabits }) {
@@ -29,7 +29,7 @@ export default function HabitContainer({ id, name, days, loadHabits }) {
             return;
         }
 
-        axios // pesquisar como usar delete com axios
+        axios
             .delete(URL.HABITS + `/${id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
             })

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import URL from '../../../scripts/constants';
 import { useContext } from 'react';
 import { TokenContext } from '../../../scripts/TokenContext';
-import { useState } from 'react';
 
 
 export default function HabitTodayContainer({ habit, loadHabits }) {
@@ -18,12 +17,8 @@ export default function HabitTodayContainer({ habit, loadHabits }) {
             .post(URL.HABITS + `/${id}/${check}`, {}, {
                 headers: { "Authorization": `Bearer ${token}` }
             })
-            .then(({ data }) => {
-                loadHabits();
-            })
-            .catch((error) => {
-                console.error(error);
-            })
+            .then(loadHabits)
+            .catch((error) => console.error(error));
     }
 
     return (

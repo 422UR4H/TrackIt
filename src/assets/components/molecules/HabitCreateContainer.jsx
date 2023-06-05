@@ -27,7 +27,7 @@ export default function HabitCreateContainer(props) {
             alert("Insira um nome válido para o hábito");
             return;
         }
-        
+
         setIsLoading(true);
         const days = [];
         checkboxes.forEach((checkbox, i) => { checkbox.isChecked && days.push(i) });
@@ -112,7 +112,6 @@ const StyledHabit = styled.div`
             height: 35px;
             margin-top: 30px;
             padding-left: 120px;
-
             position: relative;
 
             .cancel {

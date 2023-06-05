@@ -1,13 +1,12 @@
-import styled from 'styled-components';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 import { useContext } from 'react';
 import { PercentContext } from '../../../scripts/PercentContext';
-
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import styled from 'styled-components';
 
 export default function TodayButton() {
     const percent = useContext(PercentContext);
-    
+
     return (
         <StyledTodayButton>
             <div>
@@ -29,13 +28,6 @@ export default function TodayButton() {
 
 const StyledTodayButton = styled.div`
     background-color: #52B6FF;
-    /* color: white; */
-    /* font-size: 18px; */
-    /* line-height: 22px; */
-    /* text-align: center; */
-    /* vertical-align: middle; */
-    /* line-height: 90px; */
-
     width: 91px;
     height: 91px;
     border-radius: 50%;
@@ -55,7 +47,6 @@ const StyledTodayButton = styled.div`
     div {
         background-color: inherit;
         border-radius: inherit;
-
         width: 79px;
     }
 `;

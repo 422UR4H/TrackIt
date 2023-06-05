@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import StyledTemplate from '../components/styles/StyledTemplate';
 import Button from '../components/atoms/Button';
@@ -15,6 +15,40 @@ export default function HomePage({ setToken, setIcon }) {
   const [isLoading, setIsLoading] = useState(false);
 
 
+  function handleLogin(data) {
+    setToken(data.token);
+    setIcon(data.image);
+    navigate("/hoje");
+    
+    // PERSISTENCE
+    localStorage.setItem("user", JSON.stringify(data));
+  }
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    if (user !== null) {
+      try {
+        const { email, password } = JSON.parse(user);
+
+        axios
+          .post(URL.LOGIN, {
+            email,
+            password
+          })
+          .then(({ data }) => {
+            handleLogin(data);
+          })
+          .catch((error) => {
+            console.error(error);
+          })
+      } catch (error) {
+        console.error(error);
+        console.log(user);
+      }
+    }
+  }, []);
+
   function login(e) {
     e.preventDefault();
 
@@ -26,9 +60,7 @@ export default function HomePage({ setToken, setIcon }) {
         password
       })
       .then(({ data }) => {
-        setToken(data.token);
-        setIcon(data.image);
-        navigate("/hoje");
+        handleLogin(data);
       })
       .catch((error) => {
         setIsLoading(false);

@@ -6,7 +6,6 @@ import Button from '../components/atoms/Button';
 import Logo from '../components/atoms/Logo';
 import axios from 'axios';
 import URL from '../../scripts/constants';
-import styled from 'styled-components';
 
 
 export default function SignupPage() {
