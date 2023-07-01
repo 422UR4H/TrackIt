@@ -5,18 +5,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import dump from '../../images/dump.svg';
 import URL from '../../../scripts/constants';
+import weekDays from '../../../scripts/weekDays';
+
 
 export default function HabitContainer({ id, name, days, loadHabits }) {
     const token = useContext(TokenContext);
-    const [checkboxes, setCheckboxes] = useState([
-        { id: 'dom', label: 'D', isChecked: false },
-        { id: 'seg', label: 'S', isChecked: false },
-        { id: 'ter', label: 'T', isChecked: false },
-        { id: 'qua', label: 'Q', isChecked: false },
-        { id: 'qui', label: 'Q', isChecked: false },
-        { id: 'sex', label: 'S', isChecked: false },
-        { id: 'sab', label: 'S', isChecked: false }
-    ]);
+    const [checkboxes, setCheckboxes] = useState(weekDays);
 
     useEffect(() => {
         const updateCheckboxes = [...checkboxes];

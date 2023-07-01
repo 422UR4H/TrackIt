@@ -7,6 +7,7 @@ import axios from 'axios';
 import URL from '../../scripts/constants';
 import HabitContainer from '../components/molecules/HabitContainer';
 import { useNavigate } from 'react-router-dom';
+import weekDays from '../../scripts/weekDays';
 
 
 export default function HabitsPage() {
@@ -15,15 +16,7 @@ export default function HabitsPage() {
   const [isAddingHabit, setIsAddingHabit] = useState(false);
   const [habits, setHabits] = useState([]);
   const [name, setName] = useState('');
-  const [checkboxes, setCheckboxes] = useState([
-    { id: 'dom', label: 'D', isChecked: false },
-    { id: 'seg', label: 'S', isChecked: false },
-    { id: 'ter', label: 'T', isChecked: false },
-    { id: 'qua', label: 'Q', isChecked: false },
-    { id: 'qui', label: 'Q', isChecked: false },
-    { id: 'sex', label: 'S', isChecked: false },
-    { id: 'sab', label: 'S', isChecked: false }
-  ]);
+  const [checkboxes, setCheckboxes] = useState(weekDays);
 
 
   function loadHabits() {

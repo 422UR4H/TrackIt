@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
 import { TokenContext } from '../../scripts/TokenContext';
 import { useNavigate } from 'react-router-dom';
+import reFormatedWeekday from '../../scripts/reFormatedWeekday';
 import HabitTodayContainer from '../components/molecules/HabitTodayContainer';
 import styled from 'styled-components';
 import axios from 'axios';
-import dayjs from 'dayjs';
 import URL from '../../scripts/constants';
 
 
@@ -12,7 +12,6 @@ export default function TodayPage({ setPercent }) {
     const navigate = useNavigate();
     const token = useContext(TokenContext);
     const [habits, setHabits] = useState([]);
-    let weekday = dayjs().locale('pt-br').format('dddd');
 
     function percentConcluded() {
         let habitsConcluded = 0;
@@ -25,35 +24,6 @@ export default function TodayPage({ setPercent }) {
         const percent = habitsConcluded * 100 / habits.length;
         setPercent(percent);
         return percent.toFixed(0);
-    }
-
-    function reFormatedWeekday() {
-        switch (weekday) {
-            case 'Sunday':
-                weekday = 'Domingo';
-                break;
-            case 'Monday':
-                weekday = 'Segunda';
-                break;
-            case 'Tuesday':
-                weekday = 'Terça';
-                break;
-            case 'Wednesday':
-                weekday = 'Quarta';
-                break;
-            case 'Thursday':
-                weekday = 'Quinta';
-                break;
-            case 'Friday':
-                weekday = 'Sexta';
-                break;
-            case 'Saturday':
-                weekday = 'Sábado';
-                break;
-        }
-        weekday += ", " + dayjs().format('DD/MM');
-
-        return weekday;
     }
 
     function loadHabits() {
