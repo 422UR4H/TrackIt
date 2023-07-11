@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { TokenContext } from '../../scripts/TokenContext';
+import { TokenContext } from '../contexts/TokenContext';
 import HabitCreateContainer from '../components/molecules/HabitCreateContainer';
 import Button from '../components/atoms/Button';
 import styled from 'styled-components';

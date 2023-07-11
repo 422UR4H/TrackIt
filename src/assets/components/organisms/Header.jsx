@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TokenContext } from '../../../scripts/TokenContext';
+import { TokenContext } from '../../contexts/TokenContext';
 import styled from 'styled-components';
 import logoMini from '../../images/logo-mini.svg';
 

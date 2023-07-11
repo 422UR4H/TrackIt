@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { TokenContext } from '../../../scripts/TokenContext';
+import { TokenContext } from '../../contexts/TokenContext';
 import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 import Button from '../atoms/Button';
 import Form from '../atoms/Form';

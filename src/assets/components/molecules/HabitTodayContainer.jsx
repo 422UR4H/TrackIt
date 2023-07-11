@@ -3,7 +3,7 @@ import Check from '../atoms/Check';
 import styled from 'styled-components';
 import URL from '../../../scripts/constants';
 import { useContext } from 'react';
-import { TokenContext } from '../../../scripts/TokenContext';
+import { TokenContext } from '../../contexts/TokenContext';
 
 
 export default function HabitTodayContainer({ habit, loadHabits }) {

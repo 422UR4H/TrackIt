@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { TokenContext } from './scripts/TokenContext';
-import { PercentContext } from './scripts/PercentContext';
+import { TokenContext } from './assets/contexts/TokenContext';
+import { PercentContext } from './assets/contexts/PercentContext';
 import HomePage from './assets/pages/HomePage';
 import SignupPage from './assets/pages/SignupPage';
 import HabitsPage from './assets/pages/HabitsPage';

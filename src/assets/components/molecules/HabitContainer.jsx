@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { TokenContext } from '../../../scripts/TokenContext';
+import { TokenContext } from '../../contexts/TokenContext';
 import ContainerCheckBoxes from '../atoms/ContainerCheckBoxes';
 import axios from 'axios';
 import styled from 'styled-components';

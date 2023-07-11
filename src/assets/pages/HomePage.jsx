@@ -18,10 +18,30 @@ export default function HomePage({ setToken, setIcon }) {
   function handleLogin(data) {
     setToken(data.token);
     setIcon(data.image);
-    navigate("/hoje");
-
+    
     // PERSISTENCE
     localStorage.setItem("user", JSON.stringify(data));
+    
+    navigate("/hoje");
+  }
+
+  function login(e) {
+    e.preventDefault();
+
+    setIsLoading(true);
+
+    axios
+      .post(URL.LOGIN, {
+        email,
+        password
+      })
+      .then(({ data }) => {
+        handleLogin(data);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        alert(error);
+      });
   }
 
   useEffect(() => {
@@ -45,27 +65,10 @@ export default function HomePage({ setToken, setIcon }) {
       } catch (error) {
         console.error(error);
       }
+    } else {
+      navigate("/");
     }
   }, []);
-
-  function login(e) {
-    e.preventDefault();
-
-    setIsLoading(true);
-
-    axios
-      .post(URL.LOGIN, {
-        email,
-        password
-      })
-      .then(({ data }) => {
-        handleLogin(data);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        alert(error);
-      });
-  }
 
   return (
     <StyledTemplate onSubmit={login}>

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PercentContext } from '../../../scripts/PercentContext';
+import { PercentContext } from '../../contexts/PercentContext';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';

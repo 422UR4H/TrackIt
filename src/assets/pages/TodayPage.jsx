@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { TokenContext } from '../../scripts/TokenContext';
+import { TokenContext } from '../contexts/TokenContext';
 import { useNavigate } from 'react-router-dom';
 import reFormatedWeekday from '../../scripts/reFormatedWeekday';
 import HabitTodayContainer from '../components/molecules/HabitTodayContainer';
